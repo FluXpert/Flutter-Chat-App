@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "248878862627",
+    "project_id": "my-learning-b",
+    "storage_bucket": "my-learning-b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248878862627:android:148a4b6c5d8c699b78fc96",
+        "android_client_info": {
+          "package_name": "com.chat.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "248878862627-ov3i51g9vfpaefpde7dd38h0b5a7m77c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfOIH9qr0S7Mw_HMKqdTjUGXwHYRJk2uo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "248878862627-ov3i51g9vfpaefpde7dd38h0b5a7m77c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248878862627:android:f83d6f1fee0b81e878fc96",
+        "android_client_info": {
+          "package_name": "com.example.my_learning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "248878862627-ov3i51g9vfpaefpde7dd38h0b5a7m77c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfOIH9qr0S7Mw_HMKqdTjUGXwHYRJk2uo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "248878862627-ov3i51g9vfpaefpde7dd38h0b5a7m77c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
