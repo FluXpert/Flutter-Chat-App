@@ -7,7 +7,7 @@ class FirebaseRepo {
 
   FirebaseRepo._instance();
 
-  final FirebaseMethod  _firebaseMethod = FirebaseMethod();
+  final FirebaseMethod _firebaseMethod = FirebaseMethod();
 
   /// =========== AUTH ================
 
@@ -40,7 +40,11 @@ class FirebaseRepo {
           String? senderName,
           String? receiverName}) async =>
       _firebaseMethod.addMessageToDB(
-          message, receiverId, senderName, receiverName);
+        message,
+        receiverId,
+        senderName,
+        receiverName,
+      );
 
   Query fetchUserChatRoom() => _firebaseMethod.fetchUserChatRoom();
 
