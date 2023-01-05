@@ -104,16 +104,17 @@ class BuildMessagesState extends State<BuildMessages> {
                                       .data() as Map<String, dynamic>;
 
                                   return Container(
-                                      margin: EdgeInsets.only(
-                                        left: (index == widget.docs.length - 1)
-                                            ? 40.0
-                                            : 60.0,
-                                      ),
-                                      child: (index == widget.docs.length - 1)
-                                          ? Text(_data['isRead'] as bool
-                                              ? 'seen'
-                                              : 'sent')
-                                          : const Text(''));
+                                    margin: EdgeInsets.only(
+                                      left: (index == widget.docs.length - 1)
+                                          ? 40.0
+                                          : 60.0,
+                                    ),
+                                    child: (index == widget.docs.length - 1)
+                                        ? Text(_data['isRead'] as bool
+                                            ? 'seen'
+                                            : 'sent')
+                                        : const Text(''),
+                                  );
                                 } else {
                                   return Container();
                                 }

@@ -33,72 +33,77 @@ class ChatterX extends StatelessWidget {
 
             if (docs[index].id != FirebaseRepo.instance.getCurrentUser()!.uid) {
               return GestureDetector(
-              onTap: () =>
-                  Navigator.pushNamed(context, ChatScreen.routeName,
-                      arguments:
-                      ChatArgs(data.email.split('@')[0], docs[index].id)),
-              child: Container(
-                margin:
-                const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 6.0),
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
-                decoration: const BoxDecoration(
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  ChatScreen.routeName,
+                  arguments: ChatArgs(
+                    data.email.split('@')[0],
+                    docs[index].id,
+                  ),
+                ),
+                child: Container(
+                  margin:
+                      const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 6.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0,
+                    vertical: 10.0,
+                  ),
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20.0),
                       bottomRight: Radius.circular(20.0),
-                    )),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        //Profile picture
-                        CircleAvatar(
-                          radius: 22.0,
-                          backgroundColor: AppColor.placeholderBg,
-                          child: Text(data.email.substring(0, 1).toUpperCase()),
-                        ),
-                        const SizedBox(
-                          width: 10.0,
-                        ),
-                        //Name and text message
-                        SizedBox(
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width * 0.50,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                data.email.split('@')[0],
-                                style: const TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black54),
-                              ),
-                              const SizedBox(
-                                height: 6.0,
-                              ),
-                              Text(
-                                data.email.toString(),
-                                style: const TextStyle(
-                                  fontSize: 12.0,
-                                  color: Colors.blueGrey,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
                     ),
-                  ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          //Profile picture
+                          CircleAvatar(
+                            radius: 22.0,
+                            backgroundColor: AppColor.placeholderBg,
+                            child:
+                                Text(data.email.substring(0, 1).toUpperCase()),
+                          ),
+                          const SizedBox(
+                            width: 10.0,
+                          ),
+                          //Name and text message
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.50,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  data.email.split('@')[0],
+                                  style: const TextStyle(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black54),
+                                ),
+                                const SizedBox(
+                                  height: 6.0,
+                                ),
+                                Text(
+                                  data.email.toString(),
+                                  style: const TextStyle(
+                                    fontSize: 12.0,
+                                    color: Colors.blueGrey,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
+              );
             }
 
             return Container();

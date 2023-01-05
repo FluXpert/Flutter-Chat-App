@@ -40,8 +40,6 @@ class ChatScreenState extends State<ChatScreen> {
     final args = ModalRoute.of(context)!.settings.arguments as ChatArgs;
     _fetchChat = FirebaseRepo.instance.fetchUserChat(args.uid);
 
-
-
     return Scaffold(
       backgroundColor: AppColor.orange,
       appBar: AppBar(
@@ -78,7 +76,8 @@ class ChatScreenState extends State<ChatScreen> {
                 } else if (snapshot.hasError) {
                   return const Icon(Icons.error_outline);
                 } else {
-                  return Expanded(child: BuildMessages(snapshot.data!.docs,args.uid));
+                  return Expanded(
+                      child: BuildMessages(snapshot.data!.docs, args.uid));
                 }
               },
             ),
@@ -96,10 +95,10 @@ class ChatScreenState extends State<ChatScreen> {
         margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(30.0),
-            border:
-                Border.all(width: 1.5, color: Theme.of(context).primaryColor)),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30.0),
+          border: Border.all(width: 1.5, color: Theme.of(context).primaryColor),
+        ),
         child: Row(
           children: [
             Expanded(
@@ -128,12 +127,13 @@ class ChatScreenState extends State<ChatScreen> {
                       color: Theme.of(context).primaryColor,
                       size: 30,
                     ),
-                    onPressed: () {
-                      FirebaseRepo.instance.addMessageToDB(
-                          message: _controller!.text,
-                          receiverId: args.uid,
-                          receiverName: args.name,
-                          senderName: senderName);
+                    onPressed: () async {
+                      await FirebaseRepo.instance.addMessageToDB(
+                        message: _controller!.text,
+                        receiverId: args.uid,
+                        receiverName: args.name,
+                        senderName: senderName,
+                      );
                       _controller!.text = '';
                       setState(() {
                         _isWriting = false;

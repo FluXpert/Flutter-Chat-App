@@ -59,28 +59,45 @@ class RecentChatsState extends State<RecentChats> {
             //
             // print('Condition: $isRead');
             return GestureDetector(
-              onTap: () async => FirebaseRepo.instance.getCurrentUser()!.uid !=
-                      data.senderId
-                  ? FirebaseRepo.instance
-                      .updateReadMsg(widget.docs[index].id)
-                      .then((value) => Navigator.pushNamed(
-                          context, ChatScreen.routeName,
+              onTap: () async =>
+                  FirebaseRepo.instance.getCurrentUser()!.uid != data.senderId
+                      ? FirebaseRepo.instance
+                          .updateReadMsg(widget.docs[index].id)
+                          .then(
+                            (value) => Navigator.pushNamed(
+                              context,
+                              ChatScreen.routeName,
+                              arguments: ChatArgs(
+                                data.name as String,
+                                widget.docs[index].id,
+                              ),
+                            ),
+                          )
+                      : Navigator.pushNamed(
+                          context,
+                          ChatScreen.routeName,
                           arguments: ChatArgs(
-                              data.name as String, widget.docs[index].id)))
-                  : Navigator.pushNamed(context, ChatScreen.routeName,
-                      arguments:
-                          ChatArgs(data.name as String, widget.docs[index].id)),
+                            data.name as String,
+                            widget.docs[index].id,
+                          ),
+                        ),
               child: Container(
-                margin:
-                    const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 6.0),
+                margin: const EdgeInsets.only(
+                  top: 5.0,
+                  bottom: 5.0,
+                  right: 6.0,
+                ),
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
+                  horizontal: 20.0,
+                  vertical: 10.0,
+                ),
                 decoration: BoxDecoration(
-                    color: isRead ? Colors.white : const Color(0xFFFFEFEE),
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(20.0),
-                      bottomRight: Radius.circular(20.0),
-                    )),
+                  color: isRead ? Colors.white : const Color(0xFFFFEFEE),
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(20.0),
+                    bottomRight: Radius.circular(20.0),
+                  ),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -117,8 +134,9 @@ class RecentChatsState extends State<RecentChats> {
                                   return const Positioned(
                                     right: 0.0,
                                     child: CircleAvatar(
-                                        radius: 5.0,
-                                        backgroundColor: Colors.red),
+                                      radius: 5.0,
+                                      backgroundColor: Colors.red,
+                                    ),
                                   );
                                 })
                           ],

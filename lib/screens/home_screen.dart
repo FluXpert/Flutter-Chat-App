@@ -28,7 +28,8 @@ class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     fetchUserChatRoom = FirebaseRepo.instance.fetchUserChatRoom().snapshots();
     FirebaseRepo.instance.updateStatus(true);
-    var senderName = FirebaseRepo.instance.getCurrentUser()!.email!.split('@')[0];
+    var senderName =
+        FirebaseRepo.instance.getCurrentUser()!.email!.split('@')[0];
   }
 
   @override
@@ -58,8 +59,13 @@ class HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           );
         }
         if (state is LogoutUnSuccessState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(state.message.toString())));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.message.toString(),
+              ),
+            ),
+          );
         }
       },
       child: Scaffold(

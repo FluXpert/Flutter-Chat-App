@@ -10,10 +10,8 @@ import 'package:flutter/material.dart';
 class Chatters extends StatelessWidget {
   static const routeName = "/chatters";
 
-
   Chatters({Key? key}) : super(key: key);
-  final fetchGlobalUsers =
-      FirebaseRepo.instance.fetchUsers().snapshots();
+  final fetchGlobalUsers = FirebaseRepo.instance.fetchUsers().snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +29,10 @@ class Chatters extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              icon: const Icon(Icons.logout_sharp),
-              color: Colors.transparent,
-              onPressed: () {})
+            icon: const Icon(Icons.logout_sharp),
+            color: Colors.transparent,
+            onPressed: () {},
+          ),
         ],
       ),
       body: FadedSlideAnimation(
@@ -42,33 +41,40 @@ class Chatters extends StatelessWidget {
         slideCurve: Curves.linearToEaseOut,
         child: Container(
           decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.secondary,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(40.0),
-                topRight: Radius.circular(40.0),
-              )),
+            color: Theme.of(context).colorScheme.secondary,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(40.0),
+              topRight: Radius.circular(40.0),
+            ),
+          ),
           child: StreamBuilder<QuerySnapshot>(
-              stream: fetchGlobalUsers,
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) {
-                  return Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Center(child: getCircularProgress()),
-                  );
-                } else if (snapshot.hasError) {
-                  return const Icon(Icons.error_outline);
-                } else if (snapshot.data!.docs.isEmpty) {
-                  return Center(
-                      child: Text(
+            stream: fetchGlobalUsers,
+            builder: (
+              BuildContext context,
+              AsyncSnapshot<QuerySnapshot> snapshot,
+            ) {
+              if (!snapshot.hasData) {
+                return Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Center(child: getCircularProgress()),
+                );
+              } else if (snapshot.hasError) {
+                return const Icon(Icons.error_outline);
+              } else if (snapshot.data!.docs.isEmpty) {
+                return Center(
+                  child: Text(
                     AppConst.chatRoomWillBeHere,
                     style: Theme.of(context).textTheme.headline6?.copyWith(
-                        letterSpacing: 1.1, fontStyle: FontStyle.normal),
-                  ));
-                } else {
-                  return ChatterX(docs: snapshot.data!.docs);
-                }
-              }),
+                          letterSpacing: 1.1,
+                          fontStyle: FontStyle.normal,
+                        ),
+                  ),
+                );
+              } else {
+                return ChatterX(docs: snapshot.data!.docs);
+              }
+            },
+          ),
         ),
       ),
     );
